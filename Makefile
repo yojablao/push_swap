@@ -6,7 +6,7 @@
 #    By: yojablao <yojablao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/02 04:35:32 by yojablao          #+#    #+#              #
-#    Updated: 2024/06/20 21:17:46 by yojablao         ###   ########.fr        #
+#    Updated: 2024/06/20 21:31:46 by yojablao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ NAME = push_swap
 all: $(NAME)
 
 
-$(NAME): $(OBJ_FILES)
+$(NAME): $(OBJ_FILES) | $(LIBFT_DIR)/libft.a
 	$(CC) $(CFLAGS) $(LIBFT_DIR)/libft.a $^ -o $@
 
 
@@ -49,8 +49,10 @@ push:
 	git push
 clean:
 	rm -rf $(OBJ_DIR)
+	make clean -C $(LIBFT_DIR)
 
 fclean: clean
+	make fclean -C $(LIBFT_DIR)
 	rm -f $(NAME)
 
 re: fclean all
