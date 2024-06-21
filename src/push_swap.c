@@ -6,16 +6,45 @@
 /*   By: yojablao <yojablao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 04:46:41 by yojablao          #+#    #+#             */
-/*   Updated: 2024/06/20 21:12:33 by yojablao         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:18:37 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+char	**spliter(char **arg, int c)
+{
+	int		i;
+	char	*s;
+	char	*tmp;
+	char	**tab;
+
+	if (c < 2)
+		return (0);
+	s = ft_strdup("");
+	i = 1;
+	while (i < c)
+	{
+		tmp = ft_strjoin(s, arg[i]);
+		if (!tmp)
+			return (free(s), NULL);
+		free(s);
+		s = ft_strjoin(tmp, " ");
+		free(tmp);
+		if (!s)
+			return (0);
+		i++;
+	}
+	tab = ft_split(s, ' ');
+	free(s);
+	i = 0;
+	return (tab);
+}
+
 void	put_error(char *str, int i)
 {
-	ft_putstr_fd(str, 1);
-	ft_putstr_fd("\n", 1);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
 	exit(i);
 }
 
@@ -81,15 +110,15 @@ int	main(int c, char **v)
 	b = NULL;
 	p = pars_check(v, c, &a);
 	if (sort_deja(a) == 0)
-		return (0);
+		return (tl_free(&a), 0);
 	if (p == 0)
 	{
-		free (a);
-		free (b);
+		tl_free(&a);
+		tl_free(&b);
 		return (1);
 	}
 	sort(&a, &b, lstsize(a));
-	free(a);
-	free(b);
+	tl_free(&a);
+	tl_free(&b);
 	return (0);
 }

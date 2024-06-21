@@ -6,7 +6,7 @@
 /*   By: yojablao <yojablao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 04:42:46 by yojablao          #+#    #+#             */
-/*   Updated: 2024/06/20 21:14:28 by yojablao         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:17:51 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ typedef struct s_list
 	int				content;
 	struct s_list	*next;
 }					t_list;
+void	ft_free(char **str);
+char	**spliter(char **arg, int c);
 void	put_error(char *str, int i);
 int		set_index(t_list **a);
 int		stack_set(t_list **a, char **nb, int size);
 int		ft_isnum(char **num);
-void	ft_free(char **str);
+void	tl_free(t_list **t);
 void	push_back_a(t_list **a, t_list **b);
 int		e_atoi(char *str);
 int		sort_deja(t_list *a);

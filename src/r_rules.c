@@ -6,7 +6,7 @@
 /*   By: yojablao <yojablao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:46:14 by yojablao          #+#    #+#             */
-/*   Updated: 2024/06/20 18:26:01 by yojablao         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:21:55 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,19 @@ void	rr(t_list **b, t_list **a)
 	swap_r(b);
 	swap_r(a);
 	ft_putstr_fd("rr\n", 1);
+}
+
+int	lstsize(t_list *lst)
+{
+	t_list	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = lst;
+	while (tmp != NULL)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
 }

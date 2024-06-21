@@ -6,13 +6,13 @@
 #    By: yojablao <yojablao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/02 04:35:32 by yojablao          #+#    #+#              #
-#    Updated: 2024/06/20 21:31:46 by yojablao         ###   ########.fr        #
+#    Updated: 2024/06/21 18:12:46 by yojablao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra #-fsanitize=address
 SRC_DIR = src
 OBJ_DIR = obj
 LIBFT_DIR = libft

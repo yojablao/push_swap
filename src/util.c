@@ -6,7 +6,7 @@
 /*   By: yojablao <yojablao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 00:12:35 by yojablao          #+#    #+#             */
-/*   Updated: 2024/06/20 21:15:25 by yojablao         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:18:43 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,55 +75,48 @@ int	check_e(char **s, int c)
 	return (1);
 }
 
-char	**spliter(char **arg, int c)
+int	is_valid(char **v)
 {
-	int		i;
-	char	*s;
-	char	**tab;
+	int	i;
+	int	j;
 
-	if (c < 2)
-		return (0);
-	i = 1;
-	s = ft_strdup("");
-	if (!s)
-		return (0);
-	while (i < c)
+	i = 0;
+	while (v[i])
 	{
-		s = ft_strjoin(s, arg[i]);
-		if (!s)
-			return (0);
-		s = ft_strjoin(s, " ");
-		if (!s)
-			return (0);
+		j = 0;
+		while (v[i][j])
+		{
+			if ((v[i][j] == '-' || v[i][j] == '+')
+				&& (!ft_isdigit(v[i][j + 1]) && v[i][j]))
+				return (0);
+			j++;
+		}
 		i++;
 	}
-	tab = ft_split(s, ' ');
-	free(s);
-	i = 0;
-	return (tab);
+	return (1);
 }
 
-// one nbr means its sorted just exit the program.
 int	pars_check(char **v, int c, t_list **a)
 {
 	int		i;
 	char	**args;
 
 	i = 0;
-	if (check_e(v, c) == 0)
-		return (put_error("error", 0), 0);
+	if (check_e(v, c) == 0 || is_valid(v) == 0)
+		return (put_error("Error", 2), 0);
 	args = spliter(v, c);
 	if (!args)
-		exit(1);
+		return (ft_free(args), 0);
 	while (args[i])
 	{
 		if (e_atoi(args[i]) == 0)
-			return (ft_free(args), put_error("error", 1), 0);
+			return (ft_free(args), put_error("Error", 1), 0);
 		i++;
 	}
 	if (ft_contains(args) == 0 || ft_isnum(args) == 0)
-		return (ft_free(args), put_error("error", 1), 0);
+		return (ft_free(args), tl_free(a), 0);
 	if (stack_set(a, args, i) == 0)
-		return (free(args), put_error("error", 1), 0);
+		return (ft_free(args), tl_free(a), 1);
+	ft_free(args);
 	return (1);
 }

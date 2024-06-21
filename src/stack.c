@@ -6,7 +6,7 @@
 /*   By: yojablao <yojablao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 00:29:46 by yojablao          #+#    #+#             */
-/*   Updated: 2024/06/20 21:05:11 by yojablao         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:21:41 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,30 +67,28 @@ void	push_back_a(t_list **a, t_list **b)
 
 void	ft_free(char **str)
 {
-	int	i;
+	int		j;
 
-	i = 0;
-	while (str[i])
+	j = 0;
+	while (str[j])
 	{
-		free(str[i]);
-		i++;
+		free(str[j]);
+		j++;
 	}
-	free (str);
+	free(str);
 }
 
-int	lstsize(t_list *lst)
+void	tl_free(t_list **t)
 {
-	t_list	*tmp;
-	int		i;
+	t_list	*i;
 
-	i = 0;
-	tmp = lst;
-	while (tmp != NULL)
+	i = *t;
+	while (i != NULL)
 	{
-		i++;
-		tmp = tmp->next;
+		t = &(*t)->next;
+		free(i);
+		i = (*t);
 	}
-	return (i);
 }
 
 t_list	*lstnew(int content)
