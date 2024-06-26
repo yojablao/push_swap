@@ -6,7 +6,7 @@
 /*   By: yojablao <yojablao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 00:27:05 by yojablao          #+#    #+#             */
-/*   Updated: 2024/06/20 22:26:11 by yojablao         ###   ########.fr       */
+/*   Updated: 2024/06/21 20:25:09 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,9 @@ int	small(t_list **a, int *p)
 
 int	biger(t_list **a, int *p)
 {
-	int		i;
-	int		j;
 	int		result;
 	t_list	*tmp;
 
-	i = 0;
-	j = 0;
 	tmp = *a;
 	result = tmp->p;
 	while (tmp)
@@ -104,11 +100,9 @@ int	biger(t_list **a, int *p)
 		if (tmp->p > result)
 		{
 			result = tmp->p;
-			i = j;
 		}
 		tmp = tmp->next;
-		j++;
 	}
 	*p = result;
-	return (i);
+	return (1);
 }

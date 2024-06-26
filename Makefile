@@ -6,7 +6,7 @@
 #    By: yojablao <yojablao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/02 04:35:32 by yojablao          #+#    #+#              #
-#    Updated: 2024/06/21 18:12:46 by yojablao         ###   ########.fr        #
+#    Updated: 2024/06/25 11:56:39 by yojablao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra #-fsanitize=address
 SRC_DIR = src
+HEAD = src/push_swap.h
 OBJ_DIR = obj
 LIBFT_DIR = libft
 
@@ -24,14 +25,14 @@ OBJ_FILES = $(SRC_FILES:%.c=$(OBJ_DIR)/%.o)
 NAME = push_swap
 
 
-all: $(NAME)
+all: $(OBJ_DIR) $(NAME) 
 
 
-$(NAME): $(OBJ_FILES) | $(LIBFT_DIR)/libft.a
+$(NAME): $(OBJ_FILES)  $(LIBFT_DIR)/libft.a
 	$(CC) $(CFLAGS) $(LIBFT_DIR)/libft.a $^ -o $@
 
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEAD)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 

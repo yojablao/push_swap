@@ -6,7 +6,7 @@
 /*   By: yojablao <yojablao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 00:12:35 by yojablao          #+#    #+#             */
-/*   Updated: 2024/06/21 18:18:43 by yojablao         ###   ########.fr       */
+/*   Updated: 2024/06/21 19:50:05 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int	pars_check(char **v, int c, t_list **a)
 		i++;
 	}
 	if (ft_contains(args) == 0 || ft_isnum(args) == 0)
-		return (ft_free(args), tl_free(a), 0);
+		return (ft_free(args), tl_free(a), put_error("Error", 1), 0);
 	if (stack_set(a, args, i) == 0)
 		return (ft_free(args), tl_free(a), 1);
 	ft_free(args);
