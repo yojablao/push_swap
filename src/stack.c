@@ -78,17 +78,19 @@ void	ft_free(char **str)
 	free(str);
 }
 
-void	tl_free(t_list **t)
+void tl_free(t_list **t)
 {
-	t_list	*i;
+    t_list *i;
+    t_list *next_node;
 
-	i = *t;
-	while (i != NULL)
-	{
-		t = &(*t)->next;
-		free(i);
-		i = (*t);
-	}
+    i = *t;
+    while (i != NULL)
+    {
+        next_node = i->next;
+        free(i);
+        i = next_node;
+    }
+    *t = NULL;
 }
 
 t_list	*lstnew(int content)
