@@ -6,7 +6,7 @@
 /*   By: yojablao <yojablao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 00:27:05 by yojablao          #+#    #+#             */
-/*   Updated: 2024/06/21 20:25:09 by yojablao         ###   ########.fr       */
+/*   Updated: 2024/06/27 10:21:12 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,7 @@ int	biger(t_list **a, int *p)
 	while (tmp)
 	{
 		if (tmp->p > result)
-		{
 			result = tmp->p;
-		}
 		tmp = tmp->next;
 	}
 	*p = result;

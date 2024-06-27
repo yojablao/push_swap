@@ -6,7 +6,7 @@
 /*   By: yojablao <yojablao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:46:29 by yojablao          #+#    #+#             */
-/*   Updated: 2024/06/21 18:18:05 by yojablao         ###   ########.fr       */
+/*   Updated: 2024/06/27 10:23:51 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	sort_4(t_list **a, t_list **b)
 	index = small(a, &i);
 	while (i != (*a)->p)
 	{
-		if (index > (3 / 2))
+		if (index > (4 / 2))
 			rra(a);
 		else
 			sa(a);
@@ -84,7 +84,7 @@ void	sort_5(t_list **a, t_list **b)
 	index = small(a, &i);
 	while (i != (*a)->p)
 	{
-		if (index > (3 / 2))
+		if (index > (5 / 2))
 			rra(a);
 		else
 			sa(a);

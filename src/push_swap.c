@@ -6,7 +6,7 @@
 /*   By: yojablao <yojablao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 04:46:41 by yojablao          #+#    #+#             */
-/*   Updated: 2024/06/21 19:47:30 by yojablao         ###   ########.fr       */
+/*   Updated: 2024/06/27 10:59:17 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	**spliter(char **arg, int c)
 	if (c < 2)
 		return (0);
 	s = ft_strdup("");
+	if (!s)
+		return (NULL);
 	i = 1;
 	while (i < c)
 	{
@@ -36,9 +38,7 @@ char	**spliter(char **arg, int c)
 		i++;
 	}
 	tab = ft_split(s, ' ');
-	free(s);
-	i = 0;
-	return (tab);
+	return (free(s), tab);
 }
 
 void	put_error(char *str, int i)
@@ -111,14 +111,10 @@ int	main(int c, char **v)
 	if (c == 1)
 		return (0);
 	p = pars_check(v, c, &a);
+	if (p == 0)
+		return (tl_free(&a), tl_free(&b), 0);
 	if (sort_deja(a) == 0)
 		return (tl_free(&a), 0);
-	if (p == 0)
-	{
-		tl_free(&a);
-		tl_free(&b);
-		return (1);
-	}
 	sort(&a, &b, lstsize(a));
 	tl_free(&a);
 	tl_free(&b);
